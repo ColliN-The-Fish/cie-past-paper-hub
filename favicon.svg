@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" role="img" aria-labelledby="title">
+  <title id="title">CIE Past Paper Hub — pages in orbit</title>
+  <rect x="1" y="1" width="70" height="70" rx="19" fill="#f7f7f4"/>
+  <path d="M10 43C4 35 11 18 28 11c16-7 33-3 36 6" fill="none" stroke="#315d93" stroke-width="2" stroke-linecap="round"/>
+  <path d="M62 32c6 10-1 25-18 31-13 5-27 4-32-3" fill="none" stroke="#315d93" stroke-width="2" stroke-linecap="round"/>
+  <path d="M17 18c7-1 12 1 17 5M55 18c-7-1-12 1-17 5" fill="none" stroke="#315d93" stroke-width="2" stroke-linecap="round"/>
+  <path d="M13 23c8-2 14 0 21 5v28c-7-5-13-7-21-5Z" fill="#172c4f"/>
+  <path d="M38 28c7-5 13-7 21-5v28c-8-2-14 0-21 5Z" fill="#bd3544"/>
+  <path d="M19 32c4 0 7 1 10 3m-10 6c4 0 7 1 10 3m14-9c3-2 6-3 10-3m-10 12c3-2 6-3 10-3" fill="none" stroke="#f7f7f4" stroke-width="1.7" stroke-linecap="round" opacity=".8"/>
+  <path d="M34 56h4" fill="none" stroke="#315d93" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="64" cy="17" r="3.5" fill="#bd3544"/>
+  <circle cx="11" cy="59" r="3" fill="#172c4f"/>
+</svg>
