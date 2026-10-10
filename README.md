@@ -21,9 +21,9 @@ Website: https://collin-the-fish.github.io/cie-past-paper-hub/
 
 ## Catalog and preservation
 
-The active catalog contains 21 selected subjects from https://cie.fraft.cn/, years 2001–2026, and March/June/November sessions. `catalog-status.json` records the coverage of the retained subjects and whether collection finished. Empty combinations are retained in the separate catalog backup, so absence is distinguishable from a missed query. `catalog-policy.json` defines 22 excluded syllabus codes; catalog refreshes respect that policy.
+The active catalog contains 19 selected subjects from https://cie.fraft.cn/, years 2001–2026, and March/June/November sessions. `catalog-status.json` records the coverage of the retained subjects and whether collection finished. Empty combinations are retained in the separate catalog backup, so absence is distinguishable from a missed query. `catalog-policy.json` defines 24 excluded syllabus codes; catalog refreshes respect that policy.
 
-The source was captured on 2026-10-10 and the selection updated on 2026-10-11. The active catalog contains 21,683 unique PDFs and 506 question-level video links, covering all 1,638 retained subject/year/session query combinations. Older combined-paper files, such as `9709_s03_ms_1+2+3+4+5+6+7.pdf`, remain searchable and appear under their individual paper filters.
+The source was captured on 2026-10-10 and the selection updated on 2026-10-11. The active catalog contains 19,999 unique PDFs and 506 question-level video links, covering all 1,482 retained subject/year/session query combinations. Older combined-paper files, such as `9709_s03_ms_1+2+3+4+5+6+7.pdf`, remain searchable and appear under their individual paper filters.
 
 The selected query snapshots and explicit download URLs are also included in [cie-source-catalog-backup.zip](./cie-source-catalog-backup.zip). Excluded subjects and their resources are omitted from this website backup as well as the active search catalog.
 
