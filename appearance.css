@@ -136,7 +136,7 @@ button:active:not(:disabled), .primary-button:active, .header-cta:active { trans
 .history-query { font-size: 12px; }
 .history-heading, .history-heading button { font-size: 11px; }
 .history-privacy { font-size: 10px; }
-.sidebar { border-radius: 17px; background: var(--panel-bg); }
+.sidebar { border-radius: 17px; background: var(--panel-bg); padding-bottom: 16px; }
 .subject-search-label { border-radius: 9px; padding: 8px 9px; }
 .subject-search-label input { color: var(--ink); }
 .level-switch { border-radius: 9px; padding: 4px; }
