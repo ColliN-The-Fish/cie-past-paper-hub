@@ -2,7 +2,15 @@
 
 A free, buildless IGCSE and AS/A Level past-paper library with a custom navy-and-red interface.
 
-Website: https://collin-the-fish.github.io/cie-past-paper-hub/
+## 版本與網址 / Versions
+
+- **第一版：完整版，資料最詳細、最完整。** 保留最初收錄的 43 個科目和 33,423 份資料目錄。網址：[第一版完整版](https://collin-the-fish.github.io/cie-past-paper-hub/full/)。
+- **第二版：僅限中國大陸學生使用。** 按本網站面向中國大陸學生的科目選擇精簡，收錄 19 個科目和 19,999 份資料目錄。網址：[第二版中國大陸學生版](https://collin-the-fish.github.io/cie-past-paper-hub/)。
+
+“僅限中國大陸學生使用”是第二版的適用對象說明，網站未設置地區訪問限制。兩個版本保留資料目錄和原站下載連結，PDF 檔案本身仍由原站提供。
+
+- **Version 1 — Full original edition:** the most detailed and complete edition, with 43 subjects and 33,423 indexed resources. [Open Version 1](https://collin-the-fish.github.io/cie-past-paper-hub/full/).
+- **Version 2 — Mainland China student edition:** for students in mainland China only, with a selected catalog of 19 subjects and 19,999 indexed resources. [Open Version 2](https://collin-the-fish.github.io/cie-past-paper-hub/). This describes the intended audience; access is not geographically restricted.
 
 ## Features
 
