@@ -255,3 +255,12 @@ footer { border-top: 1px solid var(--line); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+#subject-suggestions { margin-bottom: 18px; }
+#suggestion-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-height: 264px; overflow-y: auto; }
+.subject-suggestion { display: flex; align-items: center; gap: 12px; padding: 13px 14px; text-align: left; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--heading); min-width: 0; }
+.subject-suggestion:hover { background: var(--surface-hover); border-color: var(--focus-border); }
+.suggestion-code { flex-shrink: 0; padding: 7px 8px; border-radius: 9px; background: var(--blue-soft); color: var(--link-text); font-size: 12px; font-weight: 650; letter-spacing: .04em; }
+.suggestion-name { min-width: 0; flex: 1; font-size: 13px; font-weight: 600; line-height: 1.5; }
+.suggestion-name small { display: block; color: var(--text-secondary); font-size: 10px; font-weight: 400; }
+.suggestion-arrow { color: var(--accent-text); font-size: 16px; }
+@media (max-width: 600px) { #suggestion-items { grid-template-columns: 1fr; } }

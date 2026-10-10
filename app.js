@@ -125,8 +125,7 @@
     });
   }
   function renderSubjects() {
-    const term=S.normalize($('subject-search').value);
-    const visible = subjects.filter(s=>(!state.level||s.level===state.level)&&S.subjectWords(s).includes(term));
+    const visible = S.filterSubjects(subjects,$('subject-search').value,state.level);
     let html=`<button class="subject-button ${!state.subject?'active':''}" data-subject="" aria-pressed="${!state.subject}"><span class="subject-label">${t('allSubjects')}</span><span class="subject-count">${fmt(papers.filter(p=>!state.level||p.subject?.level===state.level).length)}</span></button>`;
     for (const level of ['IGCSE','A Level']) {
       const group=visible.filter(s=>s.level===level);
@@ -188,6 +187,10 @@
     persistHistory();renderHistory();
   }
   function renderHistory() {
+    const query=$('global-search').value.trim();
+    const matches=query?S.filterSubjects(subjects,query):[];
+    $('subject-suggestions').hidden=!matches.length;
+    $('suggestion-items').innerHTML=matches.map(subject=>`<button type="button" class="subject-suggestion" data-search-subject="${subject.code}"><span class="suggestion-code">${subject.code}</span><span class="suggestion-name">${esc(I.subjectName(subject))}<small>${esc(subject.level)}${I.locale==='en'?'':' · '+esc(subject.en)}</small></span><span class="suggestion-arrow" aria-hidden="true">↗</span></button>`).join('');
     $('clear-history').hidden=!recentSearches.length;
     $('history-items').innerHTML=recentSearches.length?recentSearches.map((query,index)=>`<div class="history-row"><button type="button" class="history-query" data-history-index="${index}" aria-label="${esc(t('historySearch',{query}))}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2 7M3 5v6h6M12 7v5l3 2"/></svg><span>${esc(query)}</span><span class="history-reuse" aria-hidden="true">↗</span></button><button type="button" class="history-remove" data-history-remove="${index}" aria-label="${esc(t('historyRemove',{query}))}">×</button></div>`).join(''):`<p class="history-empty">${t('historyEmpty')}</p>`;
   }
@@ -197,6 +200,24 @@
   $('global-search').setAttribute('aria-expanded','false');
   $('global-search').addEventListener('focus',showHistory);
   $('global-search').addEventListener('click',showHistory);
+  $('suggestion-items').addEventListener('click',event=>{
+    const button=event.target.closest('[data-search-subject]');
+    if(!button)return;
+    clearTimeout(timer);recordSearch($('global-search').value);state={...defaults};$('subject-search').value='';
+    update({subject:button.dataset.searchSubject});hideHistory();$('global-search').focus();hideHistory();
+  });
+  $('search-history').addEventListener('keydown',event=>{
+    if(!['ArrowDown','ArrowUp'].includes(event.key))return;
+    const buttons=[...$('search-history').querySelectorAll('button')].filter(button=>!button.hidden&&button.getClientRects().length);
+    const index=buttons.indexOf(document.activeElement);if(index<0||!buttons.length)return;
+    event.preventDefault();buttons[(index+(event.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length].focus();
+  });
+  $('global-search').addEventListener('keydown',event=>{
+    if(event.key==='ArrowDown'){
+      showHistory();const button=$('search-history').querySelector('.subject-suggestion,.history-query');
+      if(button){event.preventDefault();button.focus();}
+    }
+  });
   $('history-items').addEventListener('click',event=>{
     const remove=event.target.closest('[data-history-remove]');
     if(remove){recentSearches.splice(Number(remove.dataset.historyRemove),1);persistHistory();renderHistory();return;}
@@ -208,7 +229,7 @@
   window.addEventListener('storage',event=>{if(event.key===historyKey){recentSearches=readHistory();renderHistory();}});
 
   let timer;
-  $('global-search').addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(()=>update({query:$('global-search').value}),140);});
+  $('global-search').addEventListener('input',()=>{showHistory();clearTimeout(timer);timer=setTimeout(()=>update({query:$('global-search').value}),140);});
   $('search-form').addEventListener('submit',event=>{event.preventDefault();clearTimeout(timer);const query=$('global-search').value;update({query});recordSearch(query);hideHistory();});
   $('subject-search').addEventListener('input',renderSubjects);
   for (const key of ['year','season','type','component','sort']) $(key+'-select').addEventListener('change',event=>update({[key]:event.target.value}));

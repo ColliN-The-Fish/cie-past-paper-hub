@@ -28,7 +28,7 @@
     return String(text || '').normalize('NFKC').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[\u3400-\u9fff]/g,c=>simplified[c]||c).replace(/[_.\-/]+/g, ' ').replace(/\s+/g, ' ').trim();
   }
   const aliases = {
-    数学: 'math mathematics maths 数学', 高等数学: 'further mathematics further maths 高数 进阶数学 高等数学 数学',
+    数学: 'math mathematics maths 数学', 高等数学: 'further mathematics further maths further math 高数 进阶数学 高等数学 数学',
     数学附加: 'additional mathematics add maths 数学附加 附加数学 数学', 数学国际: 'international mathematics 国际数学 数学',
     物理: 'physics physical 物理', 化学: 'chemistry chem 化学', 生物: 'biology bio 生物',
     经济: 'economics econ 经济 经济学', 商学: 'business business studies 商学 商业 商务',
@@ -98,6 +98,11 @@
       && (!state.component || p.components.includes(state.component))
       && terms.every(variants => variants.some(term => p.searchText.includes(term))));
   }
+  function filterSubjects(subjects, query, level = '') {
+    const terms = prepareQuery(query, subjects);
+    return subjects.filter(subject => (!level || subject.level === level)
+      && terms.every(variants => variants.some(term => subjectWords(subject).includes(term))));
+  }
   function compare(mode) {
     if (mode === 'filename') return (a,b) => a.file.localeCompare(b.file, 'en', {numeric:true});
     const factor = mode === 'oldest' ? 1 : -1;
@@ -107,7 +112,7 @@
       || ({qp:0,ms:1,er:2,gt:3}[a.type] ?? 4) - ({qp:0,ms:1,er:2,gt:3}[b.type] ?? 4)
       || a.file.localeCompare(b.file,'en',{numeric:true});
   }
-  const api = {types,seasons,normalize,subjectWords,parse,filter,compare,prepareQuery};
+  const api = {types,seasons,normalize,subjectWords,parse,filter,filterSubjects,compare,prepareQuery};
   root.HubSearch = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof window === 'undefined' ? globalThis : window);

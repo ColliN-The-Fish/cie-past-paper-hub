@@ -11,7 +11,9 @@ ROOT = pathlib.Path(__file__).resolve().parent
 CACHE = ROOT / '.catalog-cache'
 CACHE.mkdir(exist_ok=True)
 existing = json.loads((ROOT / 'catalog.json').read_text(encoding='utf-8'))
-subjects = existing['subjects']
+excluded = set(json.loads((ROOT / 'catalog-policy.json').read_text(encoding='utf-8'))['excludedSubjects'])
+subjects = [subject for subject in existing['subjects'] if subject['code'] not in excluded]
+allowed = {subject['code'] for subject in subjects}
 current_year = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).year
 jobs = [(s['code'], year, season) for year in range(current_year, 2000, -1)
         for s in subjects for season in ('Mar', 'Jun', 'Nov')]
@@ -42,7 +44,7 @@ def read_query(job):
     return job, None, 'unavailable or invalid response; prior records retained'
 
 # Preserve existing records during a partial refresh instead of dropping them.
-records = {file: {'file':file,'lessons':existing.get('lessons',{}).get(file,{})} for file in existing['files']}
+records = {file: {'file':file,'lessons':existing.get('lessons',{}).get(file,{})} for file in existing['files'] if file.split('_')[0] in allowed}
 errors = []
 with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
     for number, (job, value, error) in enumerate(executor.map(read_query,jobs),1):
@@ -50,7 +52,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             errors.append({'subject':job[0],'year':job[1],'season':job[2],'error':error})
         else:
             for record in value['rows']:
-                if re.fullmatch(r'[A-Za-z0-9_.+\-]+',record.get('file','')):
+                if record.get('file','').split('_')[0] in allowed and re.fullmatch(r'[A-Za-z0-9_.+\-]+',record.get('file','')):
                     records[record['file']] = record
         if number%100 == 0:
             print(f'{number}/{len(jobs)} queries; {len(records)} files; {len(errors)} errors',flush=True)

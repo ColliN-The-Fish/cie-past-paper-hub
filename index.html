@@ -9,11 +9,11 @@
   <script src="./appearance.js"></script>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./appearance.css">
-  <script defer src="./data.js"></script>
-  <script defer src="./search.js"></script>
-  <script defer src="./i18n.js"></script>
-  <script defer src="./app.js"></script>
+  <link rel="stylesheet" href="./appearance.css?v=20261011">
+  <script defer src="./data.js?v=20261011"></script>
+  <script defer src="./search.js?v=20261011"></script>
+  <script defer src="./i18n.js?v=20261011"></script>
+  <script defer src="./app.js?v=20261011"></script>
 </head>
 <body>
   <a class="skip-link" href="#library" data-i18n="skip">跳转到资料库</a>
@@ -50,7 +50,7 @@
         <h1 id="hero-title" data-i18n="heroTitle" data-i18n-html>每一份真题，<br>离目标<span class="red-word">更近。</span></h1>
         <p data-i18n="heroDescription" data-i18n-html>让寻找试卷，成为备考中最轻松的一步。<br>IGCSE 与 AS / A Level 历年资料，井然有序。</p>
         <div class="hero-actions"><a class="primary-button" href="#library" data-i18n="findPaper" data-i18n-html>寻找我的试卷 <span aria-hidden="true">→</span></a><button class="quiet-button" id="hero-guide" data-i18n="decodeFilename" data-i18n-html>读懂文件名 <span aria-hidden="true">↗</span></button></div>
-        <div class="hero-facts"><span><strong id="subject-total">43</strong> <span data-i18n="subjectsUnit">个科目</span></span><span><strong id="year-range">2001—2026</strong> <span data-i18n="yearIndex">年份索引</span></span><span data-i18n="noLogin">无需登录，直接查找</span></div>
+        <div class="hero-facts"><span><strong id="subject-total">27</strong> <span data-i18n="subjectsUnit">个科目</span></span><span><strong id="year-range">2001—2026</strong> <span data-i18n="yearIndex">年份索引</span></span><span data-i18n="noLogin">无需登录，直接查找</span></div>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -77,16 +77,19 @@
           <input type="search" id="global-search" autocomplete="off" maxlength="160" data-i18n-placeholder="searchPlaceholder" data-i18n-aria="searchLabel" placeholder="搜索科目、代码、年份或文件名，例如 9709 2024" aria-label="搜索科目、代码、年份或文件名">
           <kbd>/</kbd><button type="submit" class="search-submit" data-i18n="searchButton" data-i18n-html>搜索 <span aria-hidden="true">→</span></button>
         </form>
-        <div class="search-history" id="search-history" hidden><div class="history-heading"><span data-i18n="recentSearches">最近搜索</span><button id="clear-history" type="button" data-i18n="clearAll">清空记录</button></div><div id="history-items"></div><p class="history-privacy" data-i18n="historyPrivacy">仅保存在此浏览器</p></div>
+        <div class="search-history" id="search-history" hidden>
+          <div id="subject-suggestions" hidden><div class="history-heading"><span data-i18n="matchingSubjects">匹配科目</span></div><div id="suggestion-items"></div></div>
+          <div class="history-heading"><span data-i18n="recentSearches">最近搜索</span><button id="clear-history" type="button" data-i18n="clearAll">清空记录</button></div><div id="history-items"></div><p class="history-privacy" data-i18n="historyPrivacy">仅保存在此浏览器</p>
+        </div>
         <div class="search-bottom"><span data-i18n="trySearch">试试搜索</span><button data-query="9709 2024" data-i18n="quickMath">9709 · 数学</button><button data-query="0625 2024" data-i18n="quickPhysics">0625 · 物理</button><button data-query="9708 2024" data-i18n="quickEconomics">9708 · 经济</button><span class="search-hint" data-i18n="searchHint">中英文、文件名，随你输入</span></div>
       </div>
       <div class="library-layout">
         <aside class="sidebar" id="subjects" aria-label="按科目浏览" data-i18n-aria="browseBySubject">
-          <div class="sidebar-heading"><h3 data-i18n="subjectNav">科目导航</h3><span id="sidebar-total">43</span></div>
+          <div class="sidebar-heading"><h3 data-i18n="subjectNav">科目导航</h3><span id="sidebar-total">27</span></div>
           <label class="subject-search-label"><span aria-hidden="true">⌕</span><input id="subject-search" type="search" data-i18n-placeholder="subjectPlaceholder" data-i18n-aria="subjectSearchLabel" placeholder="科目名称或代码" aria-label="筛选科目列表"></label>
           <div class="level-switch" aria-label="课程类别" data-i18n-aria="qualification"><button data-level="" class="active" aria-pressed="true" data-i18n="all">全部</button><button data-level="IGCSE" aria-pressed="false">IGCSE</button><button data-level="A Level" aria-pressed="false">A Level</button></div>
           <div id="subject-list"></div>
-          <div class="sidebar-note"><span class="note-icon">i</span><p data-i18n="subjectTip" data-i18n-html>名称不同？<br>输入四位科目代码，定位更准确。</p></div>
+          <div class="sidebar-note"><span class="note-icon">i</span><p data-i18n="subjectTip" data-i18n-html>中文、英文或科目代码<br>也支持「高数」「Further Maths」等简称。</p></div>
         </aside>
         <div class="results-area">
           <div class="filter-bar">

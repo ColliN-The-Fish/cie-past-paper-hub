@@ -7,7 +7,7 @@ Website: https://collin-the-fish.github.io/cie-past-paper-hub/
 ## Features
 
 - English, Traditional Chinese and Simplified Chinese interfaces, with a language selector in the header. The selection is remembered in this browser and included in shareable URLs.
-- Chinese and English subject search, including Traditional Chinese aliases, four-digit syllabus codes, filenames, and multiple search terms.
+- Chinese and English subject search, including Traditional Chinese aliases, four-digit syllabus codes, filenames, and multiple search terms. Both search fields recognize subject names and short names such as 高数 / 高等數學 / Further Maths / 9231. The main search shows clickable matching subjects as you type.
 - Recent searches: the last ten submitted queries, kept only in this browser. Click to reuse, remove one entry or clear the history. Typing alone does not add entries.
 - Original open-book and orbit logo using the existing navy, blue and red colours.
 - Custom language menu ordered English, Traditional Chinese, Simplified Chinese, with keyboard navigation and a checked selection.
@@ -21,11 +21,11 @@ Website: https://collin-the-fish.github.io/cie-past-paper-hub/
 
 ## Catalog and preservation
 
-The catalog is a snapshot of public records from https://cie.fraft.cn/, across its 43 listed subjects, years 2001–2026, and March/June/November sessions. `catalog-status.json` records the exact coverage and whether collection finished. Empty combinations are retained in the separate source backup, so absence is distinguishable from a missed query.
+The active catalog contains 27 selected subjects from https://cie.fraft.cn/, years 2001–2026, and March/June/November sessions. `catalog-status.json` records the coverage of the retained subjects and whether collection finished. Empty combinations are retained in the separate catalog backup, so absence is distinguishable from a missed query. `catalog-policy.json` defines 16 excluded syllabus codes; catalog refreshes respect that policy.
 
-The 2026-10-10 snapshot contains 33,423 unique files: 33,113 PDFs and 310 MP3s, plus 506 question-level video links. All 3,354 query combinations were collected and validated. Older combined-paper files, such as `9709_s03_ms_1+2+3+4+5+6+7.pdf`, remain searchable and appear under their individual paper filters.
+The source was captured on 2026-10-10 and the selection updated on 2026-10-11. The active catalog contains 25,254 unique PDFs and 506 question-level video links, covering all 2,106 retained subject/year/session query combinations. Older combined-paper files, such as `9709_s03_ms_1+2+3+4+5+6+7.pdf`, remain searchable and appear under their individual paper filters.
 
-The complete raw source snapshot and explicit download URLs are also included in [cie-source-catalog-backup.zip](./cie-source-catalog-backup.zip).
+The selected query snapshots and explicit download URLs are also included in [cie-source-catalog-backup.zip](./cie-source-catalog-backup.zip). Excluded subjects and their resources are omitted from this website backup as well as the active search catalog.
 
 `catalog.json` preserves subject metadata, exact filenames, and original video links. Document URLs use the original site's public download route. **The PDFs themselves are not hosted or backed up here**, in accordance with the owner's decision to preserve the complete index and links instead of downloading every PDF. Downloads depend on the source site's continued availability. This snapshot does not claim to include files or subjects absent from the source's public query interface.
 
