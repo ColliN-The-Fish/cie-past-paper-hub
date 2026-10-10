@@ -264,3 +264,17 @@ footer { border-top: 1px solid var(--line); }
 .suggestion-name small { display: block; color: var(--text-secondary); font-size: 10px; font-weight: 400; }
 .suggestion-arrow { color: var(--accent-text); font-size: 16px; }
 @media (max-width: 600px) { #suggestion-items { grid-template-columns: 1fr; } }
+.subject-group {
+  display: flex;
+  align-items: center;
+  padding: 7px 9px;
+  margin: 18px 3px 8px;
+  border-left: 3px solid currentColor;
+  border-radius: 5px;
+  font-weight: 700;
+}
+.subject-group-igcse { color: var(--link-text); background: var(--blue-soft); }
+.subject-group-a2 { color: var(--accent-text); background: var(--red-soft); }
+@media (max-width: 800px) {
+  .subject-group { flex-basis: 100%; margin: 7px 0 1px; }
+}

@@ -130,7 +130,7 @@
     for (const level of ['IGCSE','A Level']) {
       const group=visible.filter(s=>s.level===level);
       if (!group.length) continue;
-      html+=`<div class="subject-group">${level==='IGCSE'?'IGCSE':'AS & A LEVEL'}</div>`;
+      html+=`<div class="subject-group subject-group-${level==='IGCSE'?'igcse':'a2'}">${level==='IGCSE'?'IGCSE':'AS & A2'}</div>`;
       html+=group.map(s=>`<button class="subject-button ${s.code===state.subject?'active':''}" data-subject="${s.code}" aria-pressed="${s.code===state.subject}" title="${esc(s.en)}"><span class="subject-label"><span class="subject-code">${s.code}</span>${esc(I.subjectName(s))}</span><span class="subject-count">${fmt(counts[s.code]||0)}</span></button>`).join('');
     }
     if (!visible.length) html+=`<p class="subject-empty">${t('noSubjects')}</p>`;

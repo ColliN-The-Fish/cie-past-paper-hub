@@ -13,7 +13,7 @@ Website: https://collin-the-fish.github.io/cie-past-paper-hub/
 - Custom language menu ordered English, Traditional Chinese, Simplified Chinese, with keyboard navigation and a checked selection.
 - Light and dark appearances, switchable from the header. The first visit follows the system appearance; an explicit choice is remembered in this browser.
 - Consistent rounded controls, subtle shadows and smooth interaction transitions, with reduced-motion support.
-- Filters for qualification, subject, year, examination session, document type, and paper component.
+- Filters for qualification, subject, year, examination session, document type, and paper component. Subject-navigation group headings use blue for IGCSE and red for AS & A2 in both light and dark appearances.
 - Matching question-paper / mark-scheme links.
 - Original question-level video links when present in the source catalog.
 - Responsive layout, keyboard search shortcut `/`, accessible controls, and shareable filter URLs.
@@ -21,9 +21,9 @@ Website: https://collin-the-fish.github.io/cie-past-paper-hub/
 
 ## Catalog and preservation
 
-The active catalog contains 27 selected subjects from https://cie.fraft.cn/, years 2001–2026, and March/June/November sessions. `catalog-status.json` records the coverage of the retained subjects and whether collection finished. Empty combinations are retained in the separate catalog backup, so absence is distinguishable from a missed query. `catalog-policy.json` defines 16 excluded syllabus codes; catalog refreshes respect that policy.
+The active catalog contains 21 selected subjects from https://cie.fraft.cn/, years 2001–2026, and March/June/November sessions. `catalog-status.json` records the coverage of the retained subjects and whether collection finished. Empty combinations are retained in the separate catalog backup, so absence is distinguishable from a missed query. `catalog-policy.json` defines 22 excluded syllabus codes; catalog refreshes respect that policy.
 
-The source was captured on 2026-10-10 and the selection updated on 2026-10-11. The active catalog contains 25,254 unique PDFs and 506 question-level video links, covering all 2,106 retained subject/year/session query combinations. Older combined-paper files, such as `9709_s03_ms_1+2+3+4+5+6+7.pdf`, remain searchable and appear under their individual paper filters.
+The source was captured on 2026-10-10 and the selection updated on 2026-10-11. The active catalog contains 21,683 unique PDFs and 506 question-level video links, covering all 1,638 retained subject/year/session query combinations. Older combined-paper files, such as `9709_s03_ms_1+2+3+4+5+6+7.pdf`, remain searchable and appear under their individual paper filters.
 
 The selected query snapshots and explicit download URLs are also included in [cie-source-catalog-backup.zip](./cie-source-catalog-backup.zip). Excluded subjects and their resources are omitted from this website backup as well as the active search catalog.
 
